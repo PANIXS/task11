@@ -38,6 +38,8 @@ public class MainMenuAction extends BaseAction {
 				forward = "redirect:delete";
 			} else if ("update".equals(actionType)) {
 				forward = "redirect:update";
+			} else if("manager".equals(actionType)){
+				forward = "redirect:manager";
 			}
 		}
 		
