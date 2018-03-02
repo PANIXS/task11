@@ -1,14 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html; charset=shift_jis"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis"/>
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/css/task.css" type="text/css"/>
+  <title>Šw¶î•ñŠÇ—ƒVƒXƒeƒ€</title>
 </head>
-<body>
 
-<h1>hello</h1>
+<body>
+<div style="font-weight:700;font-size:16px">
+  	Šw¶ŠÇ—ŠE–Ê
+  <span style="position:absolute;right:25px">
+    <a href="<%=request.getContextPath()%>/menu">ƒƒjƒ…[</a>
+  </span>
+</div>
+<hr size="1" style="border:thin dashed #008080"/>
+
+
 
 </body>
 </html>

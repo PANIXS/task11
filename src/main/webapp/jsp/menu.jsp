@@ -30,8 +30,12 @@
     <td>&nbsp;</td>
     <td>4.<a href="<%=request.getContextPath()%>/menu?actionType=update">学生情報更新</a> </td>
   </tr><tr>
+  </tr><tr>
     <td>&nbsp;</td>
-    <td>5.<a href="#" onclick="window.close()">閉じる (*)</a> </td>
+    <td>5.<a href="<%=request.getContextPath()%>/menu?actionType=manager">学生管理界面</a> </td>
+  </tr><tr>
+    <td>&nbsp;</td>
+    <td>6.<a href="#" onclick="window.close()">閉じる (*)</a> </td>
   </tr><tr>
 </tr></table>
 </body>
