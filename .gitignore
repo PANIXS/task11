@@ -1,0 +1,41 @@
+# Maven
+target/
+*.ser
+*.ec
+
+# IntelliJ Idea
+.idea/
+/idea/
+out/
+build/
+*.ipr
+*.iws
+*.iml
+
+# Eclipse
+.classpath
+.project
+.gradle/
+.settings/
+.metadata/
+
+# OS X
+.DS_Store
+
+# kdiff3 igonre
+*.orig
+
+# pakage file
+*.war
+*.ear
+
+# temp file
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+Thumbs.db
+*.stackdump
