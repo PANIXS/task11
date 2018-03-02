@@ -16,10 +16,22 @@
   <span style="position:absolute;right:25px">
     <a href="<%=request.getContextPath()%>/menu">ƒƒjƒ…[</a>
   </span>
+  <hr size="1" style="border:thin dashed #008080"/>
 </div>
-<hr size="1" style="border:thin dashed #008080"/>
 
+<div class="Box">
+  <div class="topArea">
+  <h1 class="title">Šw¶ŠÇ—ŠE–Ê</h1>
+  </div>
+  <div class="centerArea">
 
+  </div>
+
+  <div class="bottomArea">
+
+  </div>
+
+</div>
 
 </body>
 </html>
