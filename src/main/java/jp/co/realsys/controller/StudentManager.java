@@ -39,7 +39,7 @@ public class StudentManager {
 	
 	@RequestMapping(value="/studentmanager",method=RequestMethod.GET)
 	public String page(Integer id) throws TaskException{
-		return "studentManager2";
+		return "studentManager";
 	}
 
 	@RequestMapping(value = "/getClassIdList",method = RequestMethod.POST)
