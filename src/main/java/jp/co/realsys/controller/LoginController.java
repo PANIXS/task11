@@ -2,6 +2,7 @@ package jp.co.realsys.controller;
 
 import javax.servlet.http.HttpSession;
 
+import jp.co.realsys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.realsys.error.TaskException;
-import jp.co.realsys.model.User;
-import jp.co.realsys.model.UserModel;
 import jp.co.realsys.service.UsersInfoService;
 
 @Controller
-@SessionAttributes(types = { UserModel.class })
 public class LoginController {
 
 	@Autowired

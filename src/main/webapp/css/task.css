@@ -1,3 +1,11 @@
+.clearfix:after{
+  content:".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
 body {
   background-color: #ffffff;
   font-family: "Microsoft YaHei", Osaka, monospace;
@@ -7,22 +15,79 @@ body {
 }
 .Box{
   width: 800px;
-  height: 900px;
+  height: 800px;
   margin: 0 auto;
 }
 .title{
   width: 100%;
-  height: 20%;
+  height: 100%;
   margin: 0 0;
   background-color: dodgerblue;
 }
+.topArea{
+  width: 100%;
+  height: 10%;
+}
+
 .centerArea{
-  width: 70%;
-  height:800px;
-  background-color: gray;
+  width: 100%;
+  height:75%;
+  background-color: silver;
 }
 .bottomArea{
   width: 100%;
   height: 10%;
-  background-color: gray;
+  background-color: silver;
+}
+.chooseBtn{
+  margin:5% 60% 0 10%;
+  float: left;
+  width: 35%;
+  height: 5%;
+}
+.leftArea{
+  margin:0 0 0 10%;
+  float: left;
+  width: 35%;
+  height: 88%;
+  background-color: lightsteelblue;
+}
+.exchangeArea{
+  margin:0 0 0 0;
+  float: left;
+  width: 10%;
+  height: 88%;
+  background-color: silver;
+}
+.rightArea{
+  margin:0 10% 0 0;
+  float: left;
+  width: 35%;
+  height: 88%;
+  background-color: lightsteelblue;
+}
+.rightBtn{
+  margin: 250% 0 5% 0;
+  width: 100%;
+  height: 5%;
+}
+.leftBtn{
+  margin: 5% 0 0 0;
+  width: 100%;
+  height: 5%;
+}
+.sure{
+  margin: 3% 5% 0 60%;
+  width: 12%;
+  height: 40%;
+
+}
+.cancle{
+  margin: 3% 0 0 0;
+  width: 12%;
+  height: 40%;
+}
+.stuListPanel{
+  width: 100%;
+  font-size: 12px;
 }

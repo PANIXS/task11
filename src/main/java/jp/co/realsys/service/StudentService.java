@@ -10,8 +10,6 @@ package jp.co.realsys.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import jp.co.realsys.error.TaskException;
 import jp.co.realsys.model.Student;
 
@@ -22,43 +20,24 @@ import jp.co.realsys.model.Student;
  */
 public interface StudentService {
 
-    /**
-     * �w������o�^����
-     * 
-     * @param student �w����񃂃f��
-     * @return ���R�[�h��
-     */
-    public int doRegisterStduent(Student student) throws TaskException;
 
-    /**
-     * �w�������X�V����
-     * 
-     * @param student �w����񃂃f��
-     * @return ���R�[�h��
-     */
-    public int doUpdateStduent(Student student) throws TaskException;
+     int doRegisterStduent(Student student) ;
 
-    /**
-     * �w�������폜����
-     * 
-     * @param studentId �w��ID
-     * @return ���R�[�h��
-     */
-    public int doDeleteStduent(Integer studentId) throws TaskException;
 
-    /**
-     * �w��������������
-     * 
-     * @param name ���O
-     * @return �w�����
-     */
-    public List<Student> doQueryStduentList(String name) throws TaskException;
+     int doUpdateStduent(Student student) ;
+
+
+     int doDeleteStduent(Integer studentId) ;
+
+
+     List<Student> doQueryStduentList(String name) ;
     
-    /**
-     * �w��������������
-     * 
-     * @param name ���O
-     * @return �w�����
-     */
-    public Student doQueryStduentId(Integer id) throws TaskException;
+
+     Student doQueryStduentId(Integer id) ;
+
+     List<Integer> getAllClassId();
+
+     void updateClass(Integer classId,List<Integer> studentIdList);
+
+     List<Student> getStudentByClassId(Integer classId);
 }

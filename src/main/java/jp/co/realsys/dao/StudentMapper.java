@@ -1,8 +1,10 @@
 package jp.co.realsys.dao;
 
-import java.util.List;
-
 import jp.co.realsys.model.Student;
+import org.apache.ibatis.annotations.Param;
+
+
+import java.util.List;
 
 public interface StudentMapper {
     int deleteByPrimaryKey(Integer id);
@@ -12,10 +14,20 @@ public interface StudentMapper {
     int insertSelective(Student record);
 
     Student selectByPrimaryKey(Integer id);
-    
-    List<Student> selectByName(String name);
 
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
+
+    List<Student> selectByName(String name);
+
+    List<Integer> getClassIdList();
+
+    int deleteStudentFromClass(Integer classId);
+
+    int batchUpdateClass(@Param("classId") Integer classId,@Param("studentIdList")List<Integer> studentIdList);
+
+    List<Student> selectStudentByClassId(Integer classId);
+
+    int countByStudentId(Integer id);
 }

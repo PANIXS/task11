@@ -9,6 +9,8 @@ public class Student {
 
     private String address;
 
+    private Integer classid;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +41,13 @@ public class Student {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public Integer getClassid() {
+        return classid;
+    }
+
+    public void setClassid(Integer classid) {
+        this.classid = classid;
     }
 }

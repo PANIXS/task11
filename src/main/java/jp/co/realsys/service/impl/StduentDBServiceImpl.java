@@ -8,18 +8,17 @@
  */
 package jp.co.realsys.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.realsys.dao.StudentMapper;
+import jp.co.realsys.model.Student;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.realsys.dao.StudentDao;
-import jp.co.realsys.dao.StudentMapper;
 import jp.co.realsys.error.TaskException;
-import jp.co.realsys.model.Student;
-import jp.co.realsys.model.StudentModel;
 import jp.co.realsys.service.StudentService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * �w�����f�[�^�x�[�X�̋Ɩ��w�̎����N���X
@@ -33,60 +32,60 @@ public class StduentDBServiceImpl implements StudentService{
     @Autowired
     private StudentMapper studentMapper;
     
-    /**
-     * �w������o�^����
-     * 
-     * @param student �w����񃂃f��
-     * @return ���R�[�h��
-     */
-    public int doRegisterStduent(Student student) throws TaskException {
-        //return studentDao.doRegisterStduent(student);
+
+    public int doRegisterStduent(Student student) {
     	return studentMapper.insert(student);
     }
 
-    /**
-     * �w�������X�V����
-     * 
-     * @param student �w����񃂃f��
-     * @return ���R�[�h��
-     */
-    public int doUpdateStduent(Student student) throws TaskException {
-        //return studentDao.doUpdateStduent(student);
+
+    public int doUpdateStduent(Student student) {
+        if (!checkStudentExists(student.getId())){
+            return 0;
+        }
     	return studentMapper.updateByPrimaryKeySelective(student);
     }
 
-    /**
-     * �w�������폜����
-     * 
-     * @param studentId �w��ID
-     * @return ���R�[�h��
-     */
-    public int doDeleteStduent(Integer studentId) throws TaskException {
-        //return studentDao.doDeleteStduent(studentId);
+
+    public int doDeleteStduent(Integer studentId)  {
+        if (!checkStudentExists(studentId))
+            return 0;
         return studentMapper.deleteByPrimaryKey(studentId);
     }
 
-    /**
-     * �w��������������
-     * 
-     * @param name ���O
-     * @return �w�����
-     */
-    public List<Student> doQueryStduentList(String name) throws TaskException {
-        //return studentDao.doQueryStduentList(name);
+
+    public List<Student> doQueryStduentList(String name)  {
     	return studentMapper.selectByName(name);
     }
     
-    /**
-     * �w��������������
-     * 
-     * @param name ���O
-     * @return �w�����
-     */
-    public Student doQueryStduentId(Integer id) throws TaskException {
-        //return studentDao.getQueryStudentById(id);
+
+    public Student doQueryStduentId(Integer id)  {
     	return studentMapper.selectByPrimaryKey(id);
     }
 
+    public  List<Integer> getAllClassId(){
+        return studentMapper.getClassIdList();
+    }
+
+    /*
+    left ->先根据班级id把对应classid置0,再批量插入左边的列表(改变学生的classid)
+    * */
+    @Transactional
+    public void updateClass(Integer classId,List<Integer> studentIdList){
+        Integer num=studentMapper.deleteStudentFromClass(classId);
+        if (CollectionUtils.isEmpty(studentIdList)){
+            return ;
+        }
+        studentMapper.batchUpdateClass(classId,studentIdList);
+    }
+
+    public List<Student> getStudentByClassId(Integer classId){
+        return  studentMapper.selectStudentByClassId(classId);
+    }
+
+    private boolean checkStudentExists(Integer id){
+        int num=studentMapper.countByStudentId(id);
+        return num>0;
+
+    }
 	
 }

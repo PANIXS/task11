@@ -6,13 +6,13 @@
  */
 package jp.co.realsys.controller;
 
+import jp.co.realsys.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.realsys.error.TaskException;
-import jp.co.realsys.model.Student;
 import jp.co.realsys.service.StudentService;
 
 /**
@@ -38,8 +38,8 @@ public class UpdateAction {
 		return "updateStudent";
 	}
 	
-	
-	public String updateStudent(Student student) throws TaskException{
+	@RequestMapping(value = "updateStudent",method = RequestMethod.POST)
+	public String updateStudent(Student student) {
 		studentService.doUpdateStduent(student);
 		return "updateResult";
 	}

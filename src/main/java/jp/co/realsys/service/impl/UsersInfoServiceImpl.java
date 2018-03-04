@@ -1,13 +1,11 @@
 package jp.co.realsys.service.impl;
 
+import jp.co.realsys.dao.UserMapper;
+import jp.co.realsys.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.realsys.dao.UserDao;
-import jp.co.realsys.dao.UserMapper;
 import jp.co.realsys.error.TaskException;
-import jp.co.realsys.model.User;
-import jp.co.realsys.model.UserModel;
 import jp.co.realsys.service.UsersInfoService;
 
 @Service("usersInfoService") 

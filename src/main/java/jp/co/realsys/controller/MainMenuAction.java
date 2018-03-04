@@ -39,7 +39,7 @@ public class MainMenuAction extends BaseAction {
 			} else if ("update".equals(actionType)) {
 				forward = "redirect:update";
 			} else if("manager".equals(actionType)){
-				forward = "redirect:manager";
+				forward = "redirect:studentmanager";
 			}
 		}
 		

@@ -1,15 +1,8 @@
 package jp.co.realsys.model;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class User {
-	@NotEmpty
-	@Length(max=10)
     private Integer userid;
 
-	@NotEmpty
-	@Length(max=10)
     private String password;
 
     public Integer getUserid() {

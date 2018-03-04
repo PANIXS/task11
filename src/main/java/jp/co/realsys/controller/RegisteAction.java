@@ -6,16 +6,13 @@
  */
 package jp.co.realsys.controller;
 
-import javax.annotation.Resource;
-
+import jp.co.realsys.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.realsys.error.TaskException;
-import jp.co.realsys.model.Student;
 import jp.co.realsys.service.StudentService;
 
 /**
@@ -41,9 +38,9 @@ public class RegisteAction {
 	}
 	
 	@RequestMapping(value="/registe",method=RequestMethod.POST)
-	public String registStudent(Student student) throws TaskException{
+	public String registeStudent(Student student) throws TaskException{
 		studentService.doRegisterStduent(student);
-		return "redirect:Result";
+		return "registerResult";
 	}
 	
 	
