@@ -95,3 +95,13 @@ body {
   width: 100%;
   font-size: 12px;
 }
+#updateDialog{
+  float:left;
+  width: 240px;
+  height: 140px;
+  margin: 0 0 0 40%;
+  background-color: aquamarine;
+}
+.stuInput{
+  margin-left: 59px;
+}

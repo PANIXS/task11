@@ -147,7 +147,8 @@
   </div>
 
   <div class="clearfix centerArea">
-    <select class="chooseBtn" name="classId" onchange="chooseUp()" ></select>
+    <select class="chooseBtn" name="classId" onchange="chooseUp()" >
+    </select>
     <div class="leftArea">
       <table border="1" class="stuListPanel">
 

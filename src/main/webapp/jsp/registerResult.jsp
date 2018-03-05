@@ -1,23 +1,41 @@
-<%@ page contentType="text/html; charset=shift_jis"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=shift_jis"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta http-equiv="Content-Script-Type" content="text/javascript"/>
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/task.css" type="text/css"/>
-  <title>Šw¶î•ñŠÇ—ƒVƒXƒeƒ€</title>
+  <title>å­¦ç”Ÿæƒ…å ±ç®¡ç†ã‚·ã‚¹ãƒ†ãƒ </title>
 </head>
 
 <body>
 <div style="font-weight:700;font-size:16px">
-  Šw¶î•ñŠÇ—ƒVƒXƒeƒ€ Struts2.0”Å “o˜^Œ‹‰Ê‰æ–Ê
+  å­¦ç”Ÿæƒ…å ±ç®¡ç†ã‚·ã‚¹ãƒ†ãƒ  Struts2.0ç‰ˆ ç™»éŒ²çµæœç”»é¢
   <span style="position:absolute;right:25px">
-    <a href="<%=request.getContextPath()%>/menu">ƒƒjƒ…[</a>
+    <a href="<%=request.getContextPath()%>/menu">ãƒ¡ãƒ‹ãƒ¥ãƒ¼</a>
   </span>
 </div>
 <hr size="1" style="border:thin dashed #008080"/>
-<h1>SUCCESS</h1>
+
+  <div style="position:absolute;left:10px;height:442px;width:981px; overflow:auto;">
+
+    <c:if test="${not empty msg}"><span style="color:red">${msg}</span></c:if>
+    <c:if test="${not empty student}">
+      <table border="0" cellspacing="1" cellpadding="3" bgcolor="#000000">
+        <tr align="left">
+          <th bgcolor="#A9A9A9">åå‰</th>
+          <th bgcolor="#A9A9A9">ç”Ÿå¹´æœˆæ—¥</th>
+          <th bgcolor="#A9A9A9">ä½æ‰€</th>
+        </tr>
+          <tr>
+            <td bgcolor="#ffffff">${student.name}&nbsp;</td>
+            <td bgcolor="#ffffff">${student.birthdate}&nbsp;</td>
+            <td bgcolor="#ffffff">${student.address}&nbsp;</td>
+          </tr>
+      </table>
+    </c:if>
+  </div>
 </body>
 </html>

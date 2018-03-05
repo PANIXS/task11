@@ -9,11 +9,14 @@ package jp.co.realsys.controller;
 import jp.co.realsys.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.realsys.error.TaskException;
 import jp.co.realsys.service.StudentService;
+
+import java.util.List;
 
 /**
  * アプリケーションID：UpdateController
@@ -34,13 +37,17 @@ public class UpdateAction {
 	
 	
 	@RequestMapping(value="update",method=RequestMethod.GET)
-	public String page(){
-		return "updateStudent";
+	public String page(Model model) {
+		List<Student> studentList = studentService.getAllStudent();
+		model.addAttribute("studentList",studentList);
+		return "showStudent";
 	}
 	
 	@RequestMapping(value = "updateStudent",method = RequestMethod.POST)
-	public String updateStudent(Student student) {
+	public String updateStudent(Student student,Model model) {
 		studentService.doUpdateStduent(student);
-		return "updateResult";
+		List<Student> studentList = studentService.getAllStudent();
+		model.addAttribute("studentList",studentList);
+		return "showStudent";
 	}
 }

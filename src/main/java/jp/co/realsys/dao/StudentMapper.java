@@ -30,4 +30,6 @@ public interface StudentMapper {
     List<Student> selectStudentByClassId(Integer classId);
 
     int countByStudentId(Integer id);
+
+    List<Student> getAllStudent();
 }

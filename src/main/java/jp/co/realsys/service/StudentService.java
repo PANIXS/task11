@@ -37,6 +37,8 @@ public interface StudentService {
 
      List<Integer> getAllClassId();
 
+     List<Student> getAllStudent();
+
      void updateClass(Integer classId,List<Integer> studentIdList);
 
      List<Student> getStudentByClassId(Integer classId);

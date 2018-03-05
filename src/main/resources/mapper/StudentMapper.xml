@@ -44,6 +44,12 @@
     WHERE ID = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="getAllStudent" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM student
+  </select>
+
     <update id="deleteStudentFromClass" parameterType="java.lang.Integer">
         UPDATE student
         SET  CLASSID = 0
@@ -72,6 +78,9 @@
   <insert id="insertSelective" parameterType="jp.co.realsys.model.Student">
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
       <if test="name != null">
         NAME,
       </if>
@@ -86,6 +95,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>

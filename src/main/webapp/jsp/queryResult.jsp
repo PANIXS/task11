@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <web-app id="WebApp_ID" version="2.4"
          xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -28,58 +29,31 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 <hr size="1" style="border:thin dashed #008080"/><br />
 
 
-<table border="0" cellspacing="1" cellpadding="3" bgcolor="#000000">
-  <tr align="left">
-    <th bgcolor="#A9A9A9">ID</th>
-    <th bgcolor="#A9A9A9">名前</th>
-    <th bgcolor="#A9A9A9">生年月日</th>
-    <th bgcolor="#A9A9A9">住所</th>
-  </tr>
 
-  <tr>
-    <td bgcolor="#ffffff"><s:property value="id"/>&nbsp;</td>
-    <td bgcolor="#ffffff"><s:property value="name"/>&nbsp;</td>
-    <td bgcolor="#ffffff"><s:property value="birthDate"/>&nbsp;</td>
-    <td bgcolor="#ffffff"><s:property value="address"/>&nbsp;</td>
-  </tr>
-
-</table >
-<table border="0" cellspacing="1" cellpadding="3" bgcolor="silver">
-  <tr align="left">
-    <th bgcolor="silver">ID</th>
-    <th bgcolor="silver">名前</th>
-    <th bgcolor="silver">生年月日</th>
-    <th bgcolor="silver">住所</th>
-    <th bgcolor="silver">班级</th>
-  </tr>
-  <c:forEach  items="${studentList}" var="w" varStatus="status">
-
-    <tr>
-      <td><input name="studentList[${status}].name" value="${w.name}"/></td>
-
-    </tr>
-  </c:forEach>
-</table>
 
 <form:form action="queryResult" >
-    <table border="0" cellspacing="1" cellpadding="3" bgcolor="#000000">
-      <tr align="left">
-        <th bgcolor="#A9A9A9">ID</th>
-        <th bgcolor="#A9A9A9">名前</th>
-        <th bgcolor="#A9A9A9">生年月日</th>
-        <th bgcolor="#A9A9A9">住所</th>
-      </tr>
-      <s:iterator value="screenBean.studentList">
-        <tr>
-          <td bgcolor="#ffffff"><s:property value="id"/>&nbsp;</td>
-          <td bgcolor="#ffffff"><s:property value="name"/>&nbsp;</td>
-          <td bgcolor="#ffffff"><s:property value="birthDate"/>&nbsp;</td>
-          <td bgcolor="#ffffff"><s:property value="address"/>&nbsp;</td>
+  <div style="position:absolute;left:10px;height:442px;width:981px; overflow:auto;">
+    <c:if test="${not empty studentList}">
+      <table border="0" cellspacing="1" cellpadding="3" bgcolor="#000000">
+        <tr align="left">
+          <th bgcolor="#A9A9A9">ID</th>
+          <th bgcolor="#A9A9A9">名前</th>
+          <th bgcolor="#A9A9A9">生年月日</th>
+          <th bgcolor="#A9A9A9">住所</th>
         </tr>
-      </s:iterator>
-    </table>
-</form:form>
 
+        <c:forEach items="${studentList}" var="student">
+          <tr>
+            <td bgcolor="#ffffff">${student.id}&nbsp;</td>
+            <td bgcolor="#ffffff">${student.name}&nbsp;</td>
+            <td bgcolor="#ffffff">${student.birthdate}&nbsp;</td>
+            <td bgcolor="#ffffff">${student.address}&nbsp;</td>
+          </tr>
+        </c:forEach>
+      </table>
+    </c:if>
+  </div>
+</form:form>
 
 </body>
 </html>

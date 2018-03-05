@@ -36,7 +36,7 @@ public class StduentDBServiceImpl implements StudentService{
     
 
     public int doRegisterStduent(Student student) {
-    	return studentMapper.insert(student);
+    	return studentMapper.insertSelective(student);
     }
 
 
@@ -84,10 +84,12 @@ public class StduentDBServiceImpl implements StudentService{
         return  studentMapper.selectStudentByClassId(classId);
     }
 
+    public List<Student> getAllStudent(){
+        return studentMapper.getAllStudent();
+    }
     private boolean checkStudentExists(Integer id){
         int num=studentMapper.countByStudentId(id);
         return num>0;
-
     }
 	
 }
