@@ -6,9 +6,12 @@
  */
 package jp.co.realsys.controller;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import jp.co.realsys.common.JsonData;
 import jp.co.realsys.model.Student;
+import jp.co.realsys.util.StringUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +49,10 @@ public class StudentManager {
 	@ResponseBody
 	public JsonData getClassIdList(Integer classId){
 		Set<Integer> classIdList = Sets.newHashSet(studentService.getAllClassId());
+		if (!classIdList.contains(0))
+			classIdList.add(0);
 		return JsonData.success(classIdList);
+
 	}
 
 	@RequestMapping(value = "getStudentByClass",method = RequestMethod.POST)
@@ -58,8 +64,12 @@ public class StudentManager {
 
 	@RequestMapping(value = "/updateClass",method = RequestMethod.POST)
 	@ResponseBody
-	public JsonData updateClass(Integer classId,List<Integer> studentList){
-		studentService.updateClass(classId,studentList);
+	public JsonData updateClass(Integer classId,String studentList){
+		List<Integer> stuIDList= Lists.newArrayList();
+		if (StringUtils.isNotBlank(studentList)){
+			stuIDList = StringUtil.spitToListInt(studentList);
+		}
+		studentService.updateClass(classId,stuIDList);
 		return JsonData.success();
 	}
 }

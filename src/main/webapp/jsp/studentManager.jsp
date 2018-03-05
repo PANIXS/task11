@@ -19,7 +19,11 @@
                   var idList = data["data"];
                   if(!isload){
                       for (var i = 0; i < idList.length; i++) {
-                          $(".chooseBtn").append("<option>" + idList[i] + "</option>");
+                          if (idList[i]==0) {
+                              $(".chooseBtn").append("<option selected="+"selected"+">" + idList[i] + "</option>");
+                          }else {
+                              $(".chooseBtn").append("<option>" + idList[i] + "</option>");
+                          }
                       }
                       isload=true;
                   }
@@ -57,11 +61,9 @@
                 $(".stuListPanel").append(row);
             }
         });
-
-
     };
     function deleteStu() {
-        var checkList = $("table tr").find("input[type=checkbox]");
+        var checkList = $(".stuListPanel tr").find("input[type=checkbox]");
         var deleteList = [];
         for(k in checkList){
             if(checkList[k].checked)
@@ -75,13 +77,56 @@
             if($("#stu_"+value).html()==null) {
                 $(".stuListPanelRight").append("<tr id=" + "stu_" + value + ">" + deleteRow.html() + "</tr>");
                 $("#cla_"+value).text(0);
-
             }
             console.log(deleteRow.html());
         });
-        /*var deleteRow=$("#")*/
     };
 
+    function addStu() {
+        var checkList = $(".stuListPanelRight tr").find("input[type=checkbox]");
+        var addList = [];
+        for(k in checkList){
+            if(checkList[k].checked)
+                addList.push(checkList[k].value);
+        }
+        console.log(addList);
+        $.each(addList,function (index,value) {
+            var addRow= $("#stu_"+value);
+            $("#stu_"+value).remove();
+            console.log($("#stu_"+value).html());
+            if($("#stu_"+value).html()==null) {
+                $(".stuListPanel").append("<tr id=" + "stu_" + value + ">" + addRow.html() + "</tr>");
+                $("#cla_"+value).text($("select option:selected").val());
+            }
+            console.log(addRow.html());
+        });
+    }
+
+    function sure() {
+        var   checkList = $(".stuListPanel tr").find("input[type=checkbox]");
+        var sureList=[];
+        for(k in checkList){
+            if (checkList[k].value!=null)
+              sureList.push(checkList[k].value);
+        }
+        console.log(sureList.toString());
+        $.ajax({
+            timeout: 3000,
+            async: false,
+            type: "POST",
+            url: "updateClass",
+            dataType: "json",
+            data: {
+                classId: $("select option:selected").val(),
+                studentList:sureList.toString(),
+            },
+            success: function (data) {
+                alert("更新成功");
+            }
+        });
+        console.log(sureList);
+    }
+    
   </script>
 </head>
 <body>
@@ -102,7 +147,7 @@
   </div>
 
   <div class="clearfix centerArea">
-    <select class="chooseBtn" name="classId" onchange="chooseUp()"></select>
+    <select class="chooseBtn" name="classId" onchange="chooseUp()" ></select>
     <div class="leftArea">
       <table border="1" class="stuListPanel">
 
@@ -110,7 +155,7 @@
     </div>
     <div class="exchangeArea">
       <button class="rightBtn" onclick="deleteStu()">&raquo;</button>
-      <button class="leftBtn">&laquo;</button>
+      <button class="leftBtn" onclick="addStu()">&laquo;</button>
     </div>
     <div class="rightArea">
       <table border="1" class="stuListPanelRight">
@@ -128,8 +173,8 @@
   </div>
 
   <div class="bottomArea">
-    <button class="sure">确定</button>
-    <button class="cancle">取消</button>
+    <button class="sure" onclick="sure()">确定</button>
+    <button class="cancle" onclick="location.reload(true)">取消</button>
   </div>
 
 </div>
