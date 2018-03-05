@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import jp.co.realsys.error.TaskException;
 import jp.co.realsys.service.StudentService;
 import org.springframework.transaction.annotation.Transactional;
-
+import jp.co.realsys.dao.stuClassMapper;
 /**
  * �w�����f�[�^�x�[�X�̋Ɩ��w�̎����N���X
  * 
@@ -31,6 +31,8 @@ public class StduentDBServiceImpl implements StudentService{
    
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private stuClassMapper studentClassMapper;
     
 
     public int doRegisterStduent(Student student) {
@@ -63,7 +65,7 @@ public class StduentDBServiceImpl implements StudentService{
     }
 
     public  List<Integer> getAllClassId(){
-        return studentMapper.getClassIdList();
+        return studentClassMapper.getAllClassID();
     }
 
     /*
