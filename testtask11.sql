@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 05/03/2018 16:24:52
+ Date: 05/03/2018 16:34:04
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ CREATE TABLE `student`  (
   `ADDRESS` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `CLASSID` int(10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of student
@@ -56,6 +56,9 @@ CREATE TABLE `student`  (
 INSERT INTO `student` VALUES (16, '权限管理', '19941212', '东京', 0);
 INSERT INTO `student` VALUES (17, '产品上架', '19941212', '东京', 0);
 INSERT INTO `student` VALUES (18, '后端开发', '19941212', '东京', 0);
+INSERT INTO `student` VALUES (30, '校花', '19940409', '北海道', 1);
+INSERT INTO `student` VALUES (31, '小兰', '19941010', '南海道', 1);
+INSERT INTO `student` VALUES (32, '练练', '19993434', '西海道', 4);
 
 -- ----------------------------
 -- Table structure for usersinfo
