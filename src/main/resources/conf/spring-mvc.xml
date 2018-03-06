@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:p="http://www.springframework.org/schema/p"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -15,29 +14,60 @@
     <context:component-scan base-package="jp.co.realsys.controller"/>
     <context:component-scan base-package="jp.co.realsys.service"/>
 
+    <mvc:interceptors>
+        <bean class="jp.co.realsys.common.HttpInterceptor"/>
+    </mvc:interceptors>
+
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
       <property name="supportedMediaTypes">
         <list>
-          <value>text/html;charset=Shift-JIS</value>
+          <value>text/html;charset=utf-8</value>
         </list>
       </property>
     </bean>
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-     p:prefix="jsp/" p:suffix=".jsp"/>
+   <!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+     p:prefix="jsp/" p:suffix=".jsp"/>-->
+<!--jsp视图解析器-->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="1"/>
+        <property name="prefix" value="jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--velocity环境配置-->
+    <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="configLocation" value="classpath:/conf/velocity.properties"/>
+        <!--模板路径-->
+        <property name="resourceLoaderPath" value="/templates"/>
+    </bean>
+
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+        <property name="order" value="0"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="cache" value="true"/>
+        <property name="suffix" value=".vm"/>
+        <property name="layoutUrl" value="layout/layout.vm"/>
+        <property name="exposeSpringMacroHelpers" value="true"/><!--是否使用spring对宏定义的支持-->
+        <property name="exposeSessionAttributes" value="true"/><!--是否开放request属性-->
+        <property name="requestContextAttribute" value="request"/><!--request属性引用名称-->
+        <property name="dateToolAttribute" value="dateTool"/>
+        <property name="numberToolAttribute" value="numberTool"/>
+
+
+
+    </bean>
+
+    <!--视图解析器,告诉springmvc,收到请求后该返回什么格式的数据-->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+    <!--将自定义的异常交给Spring管理-->
+    <bean class="jp.co.realsys.common.SpringExceptionResolver"/>
 
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
      
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>classpath:MessageResources</value>
-            </list>
-        </property>
-    </bean>
+
     
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/js/**" location="/js/" />
-    
+    <mvc:resources mapping="/bootstrap-4.0.0-dist/**" location="/bootstrap-4.0.0-dist/" />
     <mvc:annotation-driven/>
 </beans>

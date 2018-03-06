@@ -1,0 +1,29 @@
+<html lang="zh-CN">
+<head>
+    <title>注册学生</title>
+    <link href="../bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/vregister.css" rel="stylesheet">
+    <script src="../bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<div class="container">
+    <form action="vregister/insertStudent.page" class="form-register" method="post">
+        <h2 class="form-register-heading text-danger">Please select a landing role</h2>
+        <label for="inputName" class="sr-only">name</label>
+        <input type="text" name="name" id="inputName"  class="form-control" placeholder="name" required autofocus>
+        <label for="inputBirthday" class="sr-only">birthday</label>
+        <input type="date" name="birthday" id="inputBirthday" class="form-control " placeholder="birthday" required>
+        <label for="inputAddress" class="sr-only">address</label>
+        <input type="text" name="address" id="inputAddress" class="form-control " placeholder="address" required>
+        <label for="inputClassID" class="sr-only">classID</label>
+        <input type="number" name="classid" id="inputClassID" class="form-control " placeholder="classID">
+        <button class="btn btn-lg  btn-outline-danger" type="reset">重置</button>
+        <button class="btn btn-lg  btn-outline-danger" type="submit">添加</button>
+    </form>
+</div>
+
+
+</body>
+</html>
