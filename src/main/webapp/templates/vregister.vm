@@ -8,9 +8,13 @@
 
 
 <body>
+
 <div class="container">
+    <button id="backBtn" class="btn btn-lg btn-outline-danger">返回</button>
+
     <form action="vregister/insertStudent.page" class="form-register" method="post">
-        <h2 class="form-register-heading text-danger">Please select a landing role</h2>
+        <h2 class="form-register-heading text-danger">★Please</h2>
+        <h2 class="form-register-heading text-danger">★Add a student</h2>
         <label for="inputName" class="sr-only">name</label>
         <input type="text" name="name" id="inputName"  class="form-control" placeholder="name" required autofocus>
         <label for="inputBirthday" class="sr-only">birthday</label>

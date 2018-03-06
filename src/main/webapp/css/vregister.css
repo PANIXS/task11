@@ -9,6 +9,7 @@ body{
 }
 .form-register .form-register-heading{
     margin-bottom: 10px;
+
 }
 .form-register{
     font-weight:normal;
@@ -42,5 +43,11 @@ body{
 #inputBirthday,#inputAddress,#inputClassID{
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+#backBtn{
+    float: right;
+    width: 147px;
+    margin: 0 0 0 0;
+
 }
 
