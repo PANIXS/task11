@@ -31,7 +31,7 @@ public class MainMenuAction extends BaseAction {
 		
 		if(StringUtils.isNotBlank(actionType)){
 			if ("register".equals(actionType)) {
-				forward = "redirect:registerPage";
+				forward = "redirect:vregister";
 			} else if ("query".equals(actionType)) {
 				forward = "redirect:query";
 			} else if ("delete".equals(actionType)) {

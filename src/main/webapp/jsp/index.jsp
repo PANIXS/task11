@@ -13,7 +13,7 @@
 <hr size="1" style="border:thin dashed #008080"/>
 <table border="0" align="left"><tr>
     <td></td><td>Å°</td>
-    <td><a href="login">SpringMVC+Spring+Mybatisî≈</a></td>
+    <td><a href="vmenu">SpringMVC+Spring+Mybatisî≈</a></td>
 </tr></table>
 </body>
 </html>

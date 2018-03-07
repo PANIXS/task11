@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import jp.co.realsys.error.TaskException;
 import jp.co.realsys.service.UsersInfoService;
 
-@Controller
+/*@Controller*/
 public class LoginController {
 
 	@Autowired
@@ -27,7 +27,7 @@ public class LoginController {
 		return form;
 	}
 	
-	@RequestMapping(value = "/")
+	/*@RequestMapping(value = "/")
 	public String index() {
 		return "index";
 	}
@@ -71,5 +71,5 @@ public class LoginController {
 			throw e;
 		}
 
-	}
+	}*/
 }

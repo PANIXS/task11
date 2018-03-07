@@ -1,0 +1,12 @@
+.header{
+    background: url("http://demo.cssmoban.com/cssthemes3/cpts_211_eg/images/banner.jpg") no-repeat 0px 0px;
+    min-height: 790px;
+    text-align: center;
+}
+.header-top{
+    margin-top: 1em;
+    background: rgba(0,0,0,0.41);
+    box-sizing: border-box;
+    background-size: cover;
+    -webkit-background-size: cover;/*此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。*/
+}
