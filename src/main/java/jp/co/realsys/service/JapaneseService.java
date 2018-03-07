@@ -24,10 +24,8 @@ public class JapaneseService {
 
     public int insert(JapaneseParam japaneseParam){
         BeanValidator.check(japaneseParam);
-        Japanese before = japaneseMapper.selectByPrimaryKey(japaneseParam.getId());
-        Preconditions.checkNotNull(before,"待更新的日本人不存在");
-        Japanese after = Japanese.builder().id(japaneseParam.getId()).age(japaneseParam.getAge()).sex(japaneseParam.getSex()).user(japaneseParam.getUser()).build();
-      return   japaneseMapper.insertSelective(before);
+        Japanese japanese = Japanese.builder().age(japaneseParam.getAge()).sex(japaneseParam.getSex()).user(japaneseParam.getUser()).build();
+      return   japaneseMapper.insertSelective(japanese);
     }
 
     public List<Japanese> getByNameAndSex(String name,Integer sex){
@@ -39,8 +37,8 @@ public class JapaneseService {
        return  japaneseMapper.selectByExample(japaneseExample);
     }
 
-    public Japanese getSingle(JapaneseParam japaneseParam){
-        return japaneseMapper.selectByPrimaryKey(japaneseParam.getId());
+    public Japanese getSingle(Integer japaneseID){
+        return japaneseMapper.selectByPrimaryKey(japaneseID);
     }
 
     public List<Integer> getAllSex(){
@@ -51,7 +49,7 @@ public class JapaneseService {
 
     public int update(JapaneseParam japaneseParam){
         BeanValidator.check(japaneseParam);
-        Japanese japanese = Japanese.builder().user(japaneseParam.getUser()).sex(japaneseParam.getSex()).age(japaneseParam.getAge()).build();
+        Japanese japanese = Japanese.builder().id(japaneseParam.getId()).user(japaneseParam.getUser()).sex(japaneseParam.getSex()).age(japaneseParam.getAge()).build();
         return japaneseMapper.updateByPrimaryKey(japanese);
     }
 

@@ -1,5 +1,6 @@
 package jp.co.realsys.controller;
 
+import com.google.common.collect.Lists;
 import com.sun.org.apache.regexp.internal.RE;
 import jp.co.realsys.common.JsonData;
 import jp.co.realsys.constant.UrlPattern;
@@ -27,7 +28,7 @@ public class JapaneseController {
     @RequestMapping(value = "",method = RequestMethod.GET)
     public String page(Model model){
         List<Japanese> japaneseList= japaneseService.getAll();
-        List<Integer> japaneseSexList = japaneseService.getAllSex();
+        List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
         model.addAttribute("japaneseList",japaneseList);
         model.addAttribute("sexList",japaneseSexList);
         return UrlPattern.INDEX;
@@ -35,7 +36,7 @@ public class JapaneseController {
 
     @RequestMapping(value = "getByNameAndSex",method = RequestMethod.POST)
     public String getByName(String name,Integer sex,Model model){
-        List<Integer> japaneseSexList = japaneseService.getAllSex();
+        List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
         model.addAttribute("sexList",japaneseSexList);
         if (StringUtils.isBlank(name))
             return UrlPattern.INDEX;
@@ -44,11 +45,13 @@ public class JapaneseController {
         return UrlPattern.INDEX;
     }
 
-    @RequestMapping(value = "updateBefore",method = RequestMethod.POST)
-    @ResponseBody
-    public JsonData updatebefore(JapaneseParam japaneseParam){
-        Japanese before = japaneseService.getSingle(japaneseParam);
-        return JsonData.success(before);
+    @RequestMapping(value = "updatePage",method = RequestMethod.GET)
+    public String updatebefore(Integer japaneseID,Model model){
+        Japanese before = japaneseService.getSingle(japaneseID);
+        List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
+        model.addAttribute("sexList",japaneseSexList);
+        model.addAttribute("japanese",before);
+        return UrlPattern.UPDATE;
     }
     @RequestMapping(value = "update",method = RequestMethod.POST)
     public String update(JapaneseParam japaneseParam,Model model){
@@ -59,7 +62,7 @@ public class JapaneseController {
          model.addAttribute("updateResult","更新失败");
        }
         List<Japanese> japaneseList= japaneseService.getAll();
-        List<Integer> japaneseSexList = japaneseService.getAllSex();
+        List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
         model.addAttribute("japaneseList",japaneseList);
         model.addAttribute("sexList",japaneseSexList);
        return UrlPattern.INDEX;
@@ -73,13 +76,19 @@ public class JapaneseController {
     }
 
     @RequestMapping(value = "insertPage",method = RequestMethod.GET)
-    public String InsertPage(){
+    public String InsertPage(Model model){
+        List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
+        model.addAttribute("sexList",japaneseSexList);
         return UrlPattern.INSERT;
     }
 
     @RequestMapping(value = "insert",method = RequestMethod.POST)
-    public String Insert(JapaneseParam japaneseParam){
+    public String Insert(JapaneseParam japaneseParam,Model model){
         japaneseService.insert(japaneseParam);
-        return UrlPattern.INSERT;
+        List<Japanese> japaneseList= japaneseService.getAll();
+        List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
+        model.addAttribute("japaneseList",japaneseList);
+        model.addAttribute("sexList",japaneseSexList);
+        return UrlPattern.INDEX;
     }
 }

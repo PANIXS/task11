@@ -3,7 +3,7 @@
 	#set($page_title="注册学生")
 
 		<div class="container">
-            <button  class="btn btn-default" onclick="location.assign('http://localhost:8080')">全部展示</button>
+            <button  class="btn btn-outline-danger" onclick="location.assign('http://localhost:8080')">全部展示</button>
 			<form class="form-inline" action="getByNameAndSex" method="post">
 				<div class="form-group">
 					<label for="username">ユーザー： </label>
@@ -17,15 +17,16 @@
 					  #end
 					</select>
 				</div>
-				<button   type="submit" class="btn btn-default">検索</button>
+				<button   type="submit" class="btn btn-outline-danger">検索</button>
 			</form>
-            <button  class="btn btn-default" onclick="deleteJ()">削除</button>
-            <button  class="btn btn-default" onclick="location.assign('http://localhost:8080/insertPage')">新たに</button>
+            <button  class="btn btn-outline-danger" onclick="deleteJ()">削除</button>
+            <button  class="btn btn-outline-danger" onclick="location.assign('http://localhost:8080/insertPage')">新たに</button>
 			<hr />
 			<table class="table table-hover" id="showList">
 				<thead>
 				<tr>
 					<th></th>
+                    <th>更新</th>
 					<th>ID</th>
 					<th>ユーザー</th>
 					<th>性别</th>
@@ -35,6 +36,7 @@
 				#foreach($japanese in $japaneseList)
                     <tr>
                         <td><input type="checkbox" value=$japanese.id></td>
+						<td><button  class="btn btn-outline-danger" onclick="location.assign('http://localhost:8080/updatePage?japaneseID='+$japanese.id)">更新</button></td>
                         <td>$japanese.id</td>
                         <td>$japanese.user</td>
                         <td>$japanese.sex</td>

@@ -1,19 +1,22 @@
-#set($page_title="注册学生")
-
+#set($layout="layout/vregisterLayout.vm")
+#set($page_title="注册日本人")
 <div class="container">
-    <button id="backBtn" class="btn btn-lg btn-outline-danger">返回</button>
-
+    <button id="backBtn" class="btn btn-lg btn-outline-danger" onclick="location.assign('http://localhost:8080')">返回</button>
     <form action="insert" class="form-register" method="post">
         <h2 class="form-register-heading text-danger">★Please</h2>
-        <h2 class="form-register-heading text-danger">★Add a student</h2>
-        <label for="inputName" class="sr-only">name</label>
-        <input type="text" name="name" id="inputName"  class="form-control" placeholder="name" required autofocus>
-        <label for="inputBirthday" class="sr-only">birthday</label>
-        <input type="date" name="birthday" id="inputBirthday" class="form-control " placeholder="birthday" required>
-        <label for="inputAddress" class="sr-only">address</label>
-        <input type="text" name="address" id="inputAddress" class="form-control " placeholder="address" required>
-        <label for="inputClassID" class="sr-only">classID</label>
-        <input type="number" name="classid" id="inputClassID" class="form-control " placeholder="classID">
+        <h2 class="form-register-heading text-danger">★Add a japanese</h2>
+        <label for="inputName" class="sr-only">user</label>
+        <input type="text" name="user" id="inputName"  class="form-control" placeholder="name" required autofocus>
+        #*<label for="inputBirthday" class="sr-only">sex</label>
+        <input type="number" name="sex" id="inputBirthday" class="form-control " placeholder="sex" required>*#
+        <label for="inputBirthday" class="sr-only">sex</label>
+        <select class="form-control" name="sex" id="inputBirthday">
+            #foreach($sex in $sexList)
+                <option value=$sex>$sex</option>
+            #end
+        </select>
+        <label for="inputClassID" class="sr-only">age</label>
+        <input type="number" name="age" id="inputClassID" class="form-control " placeholder="age">
         <button class="btn btn-lg  btn-outline-danger" type="reset">重置</button>
         <button class="btn btn-lg  btn-outline-danger" type="submit">添加</button>
     </form>

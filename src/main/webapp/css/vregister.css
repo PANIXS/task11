@@ -36,11 +36,11 @@ body{
     margin-top: 10px;
     width: 49%;
 }
-#inputName,#inputBirthday,#inputAddress{/*同时使用多个id选择器时,要加逗号才正确*/
+#inputName,#inputBirthday{/*同时使用多个id选择器时,要加逗号才正确*/
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-#inputBirthday,#inputAddress,#inputClassID{
+#inputBirthday,#inputClassID{
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
@@ -48,5 +48,12 @@ body{
     float: right;
     width: 147px;
     margin: 0 0 0 0;
+}
+#inputBirthday{
+    padding: 10px 10px 10px 5px;
+    height: 46px;
+}
+#inputID{
+    display: none;
 }
 

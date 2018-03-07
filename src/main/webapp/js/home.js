@@ -15,8 +15,8 @@ function deleteJ() {
         data:{
             deleteList:deleteList.toString(),
         },
-        success: function () {
-            location.assign('http://localhost:8080')
+        success: function (data) {
+            location.assign('http://localhost:8080');
         }
     });
 };
