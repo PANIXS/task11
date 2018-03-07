@@ -1,26 +1,16 @@
-
-$(document).ready(function () {
+function query() {
     $.ajax({
         timeout: 3000,
         async: false,
         type: "POST",
-        url: "getClassIdList",
+        url: "getByNameAndSex",
         dataType: "json",
         data:{
-
+            name:$("#username").val(),
+            sex: $(".form-control option:selected").val(),
         },
-        success: function (data) {
-            var idList = data["data"];
-            if(!isload){
-                for (var i = 0; i < idList.length; i++) {
-                    if (idList[i]==0) {
-                        $(".chooseBtn").append("<option selected="+"selected"+">" + idList[i] + "</option>");
-                    }else {
-                        $(".chooseBtn").append("<option>" + idList[i] + "</option>");
-                    }
-                }
-                isload=true;
-            }
+        success: function () {
+
         }
     });
-});
+};

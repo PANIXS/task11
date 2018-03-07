@@ -3,20 +3,21 @@
 	#set($page_title="注册学生")
 
 		<div class="container">
-			<form class="form-inline" action="getByName" method="post">
+            <button  class="btn btn-default" onclick="location.assign('http://localhost:8080')">全部展示</button>
+			<form class="form-inline" action="getByNameAndSex" method="post">
 				<div class="form-group">
 					<label for="username">ユーザー： </label>
 					<input type="text" name="name" class="form-control" id="username">
 				</div>
 				<div class="form-group">
 					<label for="sex">性别： </label>
-					<select class="form-control">
+					<select class="form-control" name="sex">
 					  <option value=$sexList[0]>男性</option>
 					  <option value=$sexList[1]>女性</option>
 					  <option value=$sexList[2]>LGBT</option>
 					</select>
 				</div>
-				<button  type="submit" class="btn btn-default">検索</button>
+				<button   type="submit" class="btn btn-default">検索</button>
 				<button  class="btn btn-default">新たに</button>
 				<button  class="btn btn-default">削除</button>
 			</form>

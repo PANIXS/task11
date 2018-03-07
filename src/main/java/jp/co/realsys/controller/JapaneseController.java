@@ -38,7 +38,7 @@ public class JapaneseController {
        return UrlPattern.INDEX;
     }*/
 
-    @RequestMapping(value = "getByName",method = RequestMethod.POST)
+    @RequestMapping(value = "getByNameAndSex",method = RequestMethod.POST)
     public String getByName(String name,Integer sex,Model model){
         List<Integer> japaneseSexList = japaneseService.getAllSex();
         model.addAttribute("sexList",japaneseSexList);
