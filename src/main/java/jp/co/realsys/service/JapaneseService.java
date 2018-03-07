@@ -9,6 +9,7 @@ import jp.co.realsys.util.BeanValidator;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -43,7 +44,9 @@ public class JapaneseService {
     }
 
     public List<Integer> getAllSex(){
-        return japaneseMapper.getAllSex();
+        List<Integer> sexList =  japaneseMapper.getAllSex();
+        Collections.sort(sexList);
+        return sexList;
     }
 
     public int update(JapaneseParam japaneseParam){
@@ -54,7 +57,7 @@ public class JapaneseService {
 
     public int delete(Integer id){
         Japanese before = japaneseMapper.selectByPrimaryKey(id);
-        Preconditions.checkNotNull(before,"待更新的日本人不存在");
+        Preconditions.checkNotNull(before,"待删除的日本人不存在");
         return  japaneseMapper.deleteByPrimaryKey(id);
     }
 

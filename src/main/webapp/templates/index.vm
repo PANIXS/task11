@@ -12,16 +12,15 @@
 				<div class="form-group">
 					<label for="sex">性别： </label>
 					<select class="form-control" name="sex">
-					  <option value=$sexList[0]>男性</option>
-					  <option value=$sexList[1]>女性</option>
-					  <option value=$sexList[2]>LGBT</option>
+					  #foreach($sex in $sexList)
+                          <option value=$sex>$sex</option>
+					  #end
 					</select>
 				</div>
 				<button   type="submit" class="btn btn-default">検索</button>
-				<button  class="btn btn-default">新たに</button>
-
 			</form>
             <button  class="btn btn-default" onclick="deleteJ()">削除</button>
+            <button  class="btn btn-default" onclick="location.assign('http://localhost:8080/insertPage')">新たに</button>
 			<hr />
 			<table class="table table-hover" id="showList">
 				<thead>

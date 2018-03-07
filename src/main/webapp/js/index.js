@@ -13,10 +13,10 @@ function deleteJ() {
         url: "deleteJapanese",
         dataType: "json",
         data:{
-            deleteList:deleteList,
+            deleteList:deleteList.toString(),
         },
-        success: function (data) {
-           var a=data[data];
+        success: function () {
+            location.assign('http://localhost:8080')
         }
     });
 };

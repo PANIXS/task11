@@ -6,6 +6,7 @@ import jp.co.realsys.constant.UrlPattern;
 import jp.co.realsys.model.Japanese;
 import jp.co.realsys.param.JapaneseParam;
 import jp.co.realsys.service.JapaneseService;
+import jp.co.realsys.util.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -65,9 +66,20 @@ public class JapaneseController {
     }
 
     @RequestMapping(value = "deleteJapanese",method = RequestMethod.POST)
-    @ResponseBody
-    public JsonData delete(List<Integer> deleteList){
-        deleteList.forEach(a->japaneseService.delete(a));
+    public JsonData delete(String deleteList){
+        List<Integer> idList = StringUtil.spitToListInt(deleteList);
+        idList.forEach(a->japaneseService.delete(a));
         return JsonData.success();
+    }
+
+    @RequestMapping(value = "insertPage",method = RequestMethod.GET)
+    public String InsertPage(){
+        return UrlPattern.INSERT;
+    }
+
+    @RequestMapping(value = "insert",method = RequestMethod.POST)
+    public String Insert(JapaneseParam japaneseParam){
+        japaneseService.insert(japaneseParam);
+        return UrlPattern.INSERT;
     }
 }
