@@ -1,32 +1,22 @@
 
-	<!--
-    	任务:
-    		1.完成用户的增删改查
-    		2.前端采用velocity模版,后端框架自选,数据库自选
-    		3.创建用户表,性别用整数或枚举类型表示
-    		3.下拉选择框通过#foreach或#macro指令生成
-    		4.表格生成用#macro创建模版生成
-    		5.修改数据时,需自动填充数据
-    		6.将画面中常用css js框架分离成一个公共画面,然后导入此画面
--->
-	#set($page_title="日本人")
-	#set($layout="layout.vm")
+	#set($layout="layout/layout.vm")
+	#set($page_title="注册学生")
 
-#*		<div class="container">
-			<form class="form-inline">
+		<div class="container">
+			<form class="form-inline" action="getByName" method="post">
 				<div class="form-group">
 					<label for="username">ユーザー： </label>
-					<input type="text" class="form-control" id="username">
+					<input type="text" name="name" class="form-control" id="username">
 				</div>
 				<div class="form-group">
 					<label for="sex">性别： </label>
 					<select class="form-control">
-					  <option value=""></option>
-					  <option value="1">男性</option>
-					  <option value="2">女性</option>
+					  <option value=$sexList[0]>男性</option>
+					  <option value=$sexList[1]>女性</option>
+					  <option value=$sexList[2]>LGBT</option>
 					</select>
 				</div>
-				<button  class="btn btn-default">検索</button>
+				<button  type="submit" class="btn btn-default">検索</button>
 				<button  class="btn btn-default">新たに</button>
 				<button  class="btn btn-default">削除</button>
 			</form>
@@ -41,26 +31,14 @@
 					<th>年齢</th>
 				</tr>
 				</thead>
-				<tr>
-					<td><input type="radio"></td>
-					<td>1</td>
-					<td>富士太郎</td>
-					<td>男</td>
-					<td>24</td>
-				</tr>
-				<tr>
-					<td><input type="radio"></td>
-					<td>2</td>
-					<td>川上弘美</td>
-					<td>女</td>
-					<td>23</td>
-				</tr>
-				<tr>
-					<td><input type="radio"></td>
-					<td>3</td>
-					<td>富士三郎</td>
-					<td>男</td>
-					<td>34</td>
-				</tr>
+				#foreach($japanese in $japaneseList)
+                    <tr>
+                        <td><input type="radio"></td>
+                        <td>$japanese.id</td>
+                        <td>$japanese.user</td>
+                        <td>$japanese.sex</td>
+                        <td>$japanese.age</td>
+                    </tr>
+				#end
 			</table>
-		</div>*#
+		</div>

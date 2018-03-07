@@ -29,10 +29,12 @@ public class JapaneseService {
       return   japaneseMapper.insertSelective(before);
     }
 
-    public List<Japanese> getByName(String name){
+    public List<Japanese> getByNameAndSex(String name,Integer sex){
         JapaneseExample japaneseExample = new JapaneseExample();
         JapaneseExample.Criteria japaneseExampleCriteria= japaneseExample.createCriteria();
-        japaneseExampleCriteria.andUserEqualTo(name);
+        japaneseExampleCriteria.andUserLike(name);
+        if (null!=sex)
+            japaneseExampleCriteria.andSexEqualTo(sex);
        return  japaneseMapper.selectByExample(japaneseExample);
     }
 

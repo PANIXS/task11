@@ -39,12 +39,12 @@ public class JapaneseController {
     }*/
 
     @RequestMapping(value = "getByName",method = RequestMethod.POST)
-    public String getByName(String name,Model model){
+    public String getByName(String name,Integer sex,Model model){
         List<Integer> japaneseSexList = japaneseService.getAllSex();
         model.addAttribute("sexList",japaneseSexList);
         if (StringUtils.isBlank(name))
             return UrlPattern.INDEX;
-        List<Japanese> japaneseList = japaneseService.getByName(name);
+        List<Japanese> japaneseList = japaneseService.getByNameAndSex(name,sex);
         model.addAttribute("japaneseList",japaneseList);
         return UrlPattern.INDEX;
     }
