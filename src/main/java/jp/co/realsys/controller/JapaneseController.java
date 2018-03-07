@@ -31,12 +31,6 @@ public class JapaneseController {
         model.addAttribute("sexList",japaneseSexList);
         return UrlPattern.INDEX;
     }
-/*    @RequestMapping(value = "getAll",method = RequestMethod.POST)
-    public String getAll(Model model){
-       List<Japanese> japaneseList= japaneseService.getAll();
-       model.addAttribute("japaneseList",japaneseList);
-       return UrlPattern.INDEX;
-    }*/
 
     @RequestMapping(value = "getByNameAndSex",method = RequestMethod.POST)
     public String getByName(String name,Integer sex,Model model){
@@ -70,4 +64,10 @@ public class JapaneseController {
        return UrlPattern.INDEX;
     }
 
+    @RequestMapping(value = "deleteJapanese",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonData delete(List<Integer> deleteList){
+        deleteList.forEach(a->japaneseService.delete(a));
+        return JsonData.success();
+    }
 }
