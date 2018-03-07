@@ -34,7 +34,7 @@
 				</thead>
 				#foreach($japanese in $japaneseList)
                     <tr>
-                        <td><input type="radio"></td>
+                        <td><input type="checkbox" value=$japanese.id></td>
                         <td>$japanese.id</td>
                         <td>$japanese.user</td>
                         <td>$japanese.sex</td>
