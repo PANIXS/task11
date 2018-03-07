@@ -26,14 +26,6 @@
       </property>
     </bean>
 
-   <!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-     p:prefix="jsp/" p:suffix=".jsp"/>-->
-<!--jsp视图解析器-->
-    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="order" value="1"/>
-        <property name="prefix" value="jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
     <!--velocity环境配置-->
     <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="configLocation" value="classpath:/conf/velocity.properties"/>

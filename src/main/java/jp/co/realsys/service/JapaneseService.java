@@ -1,5 +1,6 @@
 package jp.co.realsys.service;
 
+import com.google.common.base.Preconditions;
 import jp.co.realsys.dao.JapaneseMapper;
 import jp.co.realsys.model.Japanese;
 import jp.co.realsys.model.JapaneseExample;
@@ -13,7 +14,7 @@ import java.util.List;
 @Service
 public class JapaneseService {
     @Resource
-    JapaneseMapper japaneseMapper;
+    private JapaneseMapper japaneseMapper;
 
 
     public List<Japanese> getAll(){
@@ -22,9 +23,9 @@ public class JapaneseService {
 
     public int insert(JapaneseParam japaneseParam){
         BeanValidator.check(japaneseParam);
-        if (!checkExist(japaneseParam.getId()))
-            return 0;
-        Japanese before = Japanese.builder().id(japaneseParam.getId()).age(japaneseParam.getAge()).sex(japaneseParam.getSex()).user(japaneseParam.getUser()).build();
+        Japanese before = japaneseMapper.selectByPrimaryKey(japaneseParam.getId());
+        Preconditions.checkNotNull(before,"待更新的日本人不存在");
+        Japanese after = Japanese.builder().id(japaneseParam.getId()).age(japaneseParam.getAge()).sex(japaneseParam.getSex()).user(japaneseParam.getUser()).build();
       return   japaneseMapper.insertSelective(before);
     }
 
@@ -35,6 +36,14 @@ public class JapaneseService {
        return  japaneseMapper.selectByExample(japaneseExample);
     }
 
+    public Japanese getSingle(JapaneseParam japaneseParam){
+        return japaneseMapper.selectByPrimaryKey(japaneseParam.getId());
+    }
+
+    public List<Integer> getAllSex(){
+        return japaneseMapper.getAllSex();
+    }
+
     public int update(JapaneseParam japaneseParam){
         BeanValidator.check(japaneseParam);
         Japanese japanese = Japanese.builder().user(japaneseParam.getUser()).sex(japaneseParam.getSex()).age(japaneseParam.getAge()).build();
@@ -42,10 +51,9 @@ public class JapaneseService {
     }
 
     public int delete(Integer id){
-        if (checkExist(id)){
-         return  japaneseMapper.deleteByPrimaryKey(id);
-        }
-        return 0;
+        Japanese before = japaneseMapper.selectByPrimaryKey(id);
+        Preconditions.checkNotNull(before,"待更新的日本人不存在");
+        return  japaneseMapper.deleteByPrimaryKey(id);
     }
 
     private boolean checkExist(Integer id){

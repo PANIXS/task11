@@ -29,4 +29,6 @@ public interface JapaneseMapper {
     int updateByPrimaryKey(Japanese record);
 
     List<Japanese> getAll();
+
+    List<Integer> getAllSex();
 }

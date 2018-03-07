@@ -77,6 +77,12 @@
     japanese
   </select>
 
+  <select id="getAllSex" resultType="java.lang.Integer">
+    SELECT
+    DISTINCT sex
+    FROM japanese
+  </select>
+
   <!--结束-->
 
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="jp.co.realsys.model.JapaneseExample" >
