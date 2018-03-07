@@ -1,13 +1,4 @@
-<html lang="zh-CN">
-<head>
-    <title>注册学生</title>
-    <link href="../bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/vregister.css" rel="stylesheet">
-    <script src="../bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
-</head>
-
-
-<body>
+#set($page_title="注册学生")
 
 <div class="container">
     <button id="backBtn" class="btn btn-lg btn-outline-danger">返回</button>
@@ -27,7 +18,3 @@
         <button class="btn btn-lg  btn-outline-danger" type="submit">添加</button>
     </form>
 </div>
-
-
-</body>
-</html>

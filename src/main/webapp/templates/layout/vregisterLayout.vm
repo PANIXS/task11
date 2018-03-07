@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>$!page_title</title>
+    #parse("default/header.vm")
+    <link href="../../bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/vregister.css" rel="stylesheet">
+    <script src="../../bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    $screen_content
+</div>
+</body>
+</html>
