@@ -1,13 +1,6 @@
 package jp.co.realsys.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class japanese {
+public class Japanese {
     private Integer id;
 
     private String user;

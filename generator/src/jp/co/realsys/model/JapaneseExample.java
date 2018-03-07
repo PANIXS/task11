@@ -3,14 +3,14 @@ package jp.co.realsys.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class japaneseExample {
+public class JapaneseExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public japaneseExample() {
+    public JapaneseExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

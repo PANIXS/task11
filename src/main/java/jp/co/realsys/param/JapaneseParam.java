@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @ToString
-public class japaneseParam {
+public class JapaneseParam {
 
     private Integer id;
 
