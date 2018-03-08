@@ -38,9 +38,12 @@ public class JapaneseController {
     public String getByName(String name,Integer sex,Model model){
         List<Integer> japaneseSexList = Lists.newArrayList(0,1,2);
         model.addAttribute("sexList",japaneseSexList);
-        if (StringUtils.isBlank(name))
-            return UrlPattern.INDEX;
-        List<Japanese> japaneseList = japaneseService.getByNameAndSex(name,sex);
+
+        /*if (StringUtils.isBlank(name))
+            return UrlPattern.INDEX;*/
+        List<Japanese> japaneseList = japaneseService.getByNameAndSex(StringUtils.trim(name),sex);
+        model.addAttribute("lastName",name);
+        model.addAttribute("lastSex",sex);
         model.addAttribute("japaneseList",japaneseList);
         return UrlPattern.INDEX;
     }
@@ -69,6 +72,7 @@ public class JapaneseController {
     }
 
     @RequestMapping(value = "deleteJapanese",method = RequestMethod.POST)
+    @ResponseBody
     public JsonData delete(String deleteList){
         List<Integer> idList = StringUtil.spitToListInt(deleteList);
         idList.forEach(a->japaneseService.delete(a));

@@ -31,4 +31,6 @@ public interface JapaneseMapper {
     List<Japanese> getAll();
 
     List<Integer> getAllSex();
+
+    List<Japanese> getByNameAndSex(@Param("name") String name,@Param("sex") Integer sex);
 }

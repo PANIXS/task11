@@ -4,7 +4,7 @@
     <button id="backBtn" class="btn btn-lg btn-outline-danger" onclick="location.assign('http://localhost:8080')">返回</button>
     <form action="update" class="form-register" method="post">
         <h2 class="form-register-heading text-danger">★Please</h2>
-        <h2 class="form-register-heading text-danger">★Update the message</h2>
+        <h2 class="form-register-heading text-danger">★Update the ★message</h2>
         <input type="text" name="id" id="inputID" value=$japanese.id>
         <label for="inputName" class="sr-only">user</label>
         <input type="text" name="user" id="inputName"  class="form-control" placeholder="name" required autofocus value=$japanese.user>
@@ -12,9 +12,21 @@
         <select class="form-control" name="sex" id="inputBirthday">
             #foreach($sex in $sexList)
                 #if($sex==$japanese.sex)
-                    <option selected="selected" value=$sex>$sex</option>
+                    #if($sex==0)
+                        <option selected="selected" value=$sex>男人</option>
+                    #elseif($sex==1)
+                        <option selected="selected" value=$sex>女人</option>
+                    #else
+                        <option selected="selected" value=$sex>LGBT</option>
+                    #end
                 #else
-                <option value=$sex>$sex</option>
+                    #if($sex==0)
+                        <option  value=$sex>男人</option>
+                    #elseif($sex==1)
+                        <option  value=$sex>女人</option>
+                    #else
+                        <option  value=$sex>LGBT</option>
+                    #end
                 #end
             #end
         </select>

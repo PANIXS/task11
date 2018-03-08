@@ -83,6 +83,20 @@
     FROM japanese
   </select>
 
+  <select id="getByNameAndSex" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM japanese
+    WHERE
+      <if test="name != null" >
+        user like CONCAT(CONCAT('%', #{name}), '%')
+      </if>
+      <if test="sex != null" >
+        and sex = #{sex,jdbcType=INTEGER}
+      </if>
+
+  </select>
+
   <!--结束-->
 
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="jp.co.realsys.model.JapaneseExample" >

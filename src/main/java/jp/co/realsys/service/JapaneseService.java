@@ -29,12 +29,13 @@ public class JapaneseService {
     }
 
     public List<Japanese> getByNameAndSex(String name,Integer sex){
-        JapaneseExample japaneseExample = new JapaneseExample();
+        /*JapaneseExample japaneseExample = new JapaneseExample();
         JapaneseExample.Criteria japaneseExampleCriteria= japaneseExample.createCriteria();
         japaneseExampleCriteria.andUserLike(name);
         if (null!=sex)
-            japaneseExampleCriteria.andSexEqualTo(sex);
-       return  japaneseMapper.selectByExample(japaneseExample);
+            japaneseExampleCriteria.andSexEqualTo(sex);*/
+
+       return  japaneseMapper.getByNameAndSex(name,sex);
     }
 
     public Japanese getSingle(Integer japaneseID){

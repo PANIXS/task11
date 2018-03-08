@@ -12,11 +12,17 @@
         <label for="inputBirthday" class="sr-only">sex</label>
         <select class="form-control" name="sex" id="inputBirthday">
             #foreach($sex in $sexList)
-                <option value=$sex>$sex</option>
+                #if($sex==0)
+                    <option value=$sex>男人</option>
+                #elseif($sex==1)
+                    <option value=$sex>女人</option>
+                #else
+                    <option value=$sex>LGBT</option>
+                #end
             #end
         </select>
         <label for="inputClassID" class="sr-only">age</label>
-        <input type="number" name="age" id="inputClassID" class="form-control " placeholder="age">
+        <input type="number" name="age" id="inputClassID" class="form-control " placeholder="age" required>
         <button class="btn btn-lg  btn-outline-danger" type="reset">重置</button>
         <button class="btn btn-lg  btn-outline-danger" type="submit">添加</button>
     </form>
